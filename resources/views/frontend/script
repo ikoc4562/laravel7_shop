@@ -1,0 +1,28 @@
+
+
+<script type="text/javascript">
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+$('.qtyminus, .qtyplus').on('click', function () {
+
+    id=$(this).attr('data-id');
+    qty=$(this).attr('data-qty');
+    $.ajax({
+        type:'PATCH',
+        url:'/sepet-guncelle/'+id,
+        data:{qty:qty},
+        success:function () {
+            window.location.href('/sepet');
+            alert(qty);
+        },
+
+    });
+
+})
+
+</script>
+
